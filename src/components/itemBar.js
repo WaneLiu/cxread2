@@ -1,15 +1,20 @@
 import React, { PureComponent } from 'react'
-import history from '../router/history';
-
+import { Link } from 'react-router-dom'
+//import history from '../router/history';
+/**
+ * 与tabBar组件组合使用
+ */
 class ItemBar extends PureComponent {
 
-    onClickItem = (name) => {
-        history.push(`/${name}`)
-    }
+    // onClickItem = (name) => {
+    //     history.push(`/${name}`)
+    // }
+
+    //<div onClick={() => this.onClickItem(this.props.name)}>{this.props.text}</div>
 
     render() {
         return (
-            <div onClick={() => this.onClickItem(this.props.name)}>{this.props.text}</div>
+            <Link to={"/"+this.props.name}>{this.props.text}</Link>
         )
     }
 }

@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
-
+/**
+ * 与itemBar组件组合使用
+ */
 class TabBar extends PureComponent {
     render() {
         return (

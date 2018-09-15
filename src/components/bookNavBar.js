@@ -7,6 +7,7 @@ import ItemBar from './itemBar';
 import selectedPage from '../pages/selectedPage';
 import RankPage from '../pages/rankPage';
 /**
+ * 自己写的导航栏组件
  * 本组件由itemBar与tabBar拼接而成
  */
 
