@@ -36,6 +36,8 @@ class BookNavBar extends PureComponent {
                         <Route exact path="/selected" component={selectedPage}/>
                         <Route exact path="/rank" component={RankPage}/>
                         <Route exact path="/my" component={BookShelfves}/>
+                        <Route exact path="/search" component={BookShelfves}/>
+
                     </Switch>
                 </div>
             </Router>
