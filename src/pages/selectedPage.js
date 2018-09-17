@@ -3,8 +3,8 @@ import {SearchBar, NavBar} from 'antd-mobile'
 import history from '../router/history';
 import { setSearchTextAction } from '../actions/setSearchTextAction';
 import { connect } from 'react-redux'
-
-const SelectedPage = ({searchText, setSearchText}) => {
+import { searchBook } from '../actions/searchBookAction'
+const SelectedPage = ({searchText, setSearchText, searchBook}) => {
     return (
         <div>
             <NavBar>搜索书名或作者</NavBar>
@@ -13,7 +13,8 @@ const SelectedPage = ({searchText, setSearchText}) => {
                 placeholder="Search"
                 onSubmit={(value) => {
                     //当从键盘输入的时候
-                    setSearchText(value)
+                    //console.log(value)
+                    searchBook(value)
                     history.push({
                         pathname: '/search'
                     })
@@ -30,13 +31,16 @@ const SelectedPage = ({searchText, setSearchText}) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setSearchText: (text) => {
+    setSearchText: text => {
         dispatch(setSearchTextAction(text))
+    },
+    searchBook: text => {
+        dispatch(searchBook(text))
     }
 })
 
 const mapStateToProps = state => ({
-    searchText: state.searchText
+    searchText: state.searchText,
 })
 
 
