@@ -7,6 +7,7 @@ import ItemBar from './itemBar';
 import selectedPage from '../pages/selectedPage';
 import RankPage from '../pages/rankPage';
 import SearchResultPage from '../pages/searchResultPage';
+import BookDetailPage from '../pages/bookDetailPage';
 /**
  * 自己写的导航栏组件
  * 本组件由itemBar与tabBar拼接而成
@@ -38,7 +39,7 @@ class BookNavBar extends PureComponent {
                         <Route exact path="/rank" component={RankPage}/>
                         <Route exact path="/my" component={BookShelfves}/>
                         <Route exact path="/search" component={SearchResultPage}/>
-
+                        <Route exact path="/bookDetail" component={BookDetailPage} />
                     </Switch>
                 </div>
             </Router>

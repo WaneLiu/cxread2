@@ -20,20 +20,16 @@ const getFullImgUrl = url => {
  * @param {*} bookId 
  * 点击book item的时候，要发送异步get bookDetail与bookChapterList的请求
  */
-const onClickBookItem = (bookId, getBookDetail, getBookChapterList) => {
+const onClickBookItem = (bookId, getBookDetail) => {
     //console.log(bookId)
     //发送获取bookDetail异步请求
     getBookDetail(bookId)
-    getBookChapterList(bookId)
     history.push({
-        pathname: '/bookDetail',
-        state: {
-            bookId
-        }
+        pathname: '/bookDetail'
     })
 }
 
-const BookList = ({ books, getBookDetail, getBookChapterList }) => {
+const BookList = ({ books, getBookDetail }) => {
     const styles = {
         bookItem: {
             display: 'flex',
@@ -56,7 +52,7 @@ const BookList = ({ books, getBookDetail, getBookChapterList }) => {
 
     return <Grid data={books} columnNum={2} 
                 renderItem={item => (
-                    <div style={styles.bookItem} onClick={() => onClickBookItem(item._id, getBookDetail, getBookChapterList)}>
+                    <div style={styles.bookItem} onClick={() => onClickBookItem(item._id, getBookDetail)}>
                         <img src={getFullImgUrl(item.cover)} style={styles.bookCover} alt="" />
                         <div style={styles.title}>{item.title}</div>
                     </div>
@@ -68,9 +64,9 @@ const mapDispatchToProps = dispatch => ({
     getBookDetail: bookId => {
         dispatch(getBookDetail(bookId))
     },
-    getBookChapterList: bookId => {
-        dispatch(getBookChapterList(bookId))
-    }
+    // getBookChapterList: bookId => {
+    //     dispatch(getBookChapterList(bookId))
+    // }
 })
 
 export default connect(null, mapDispatchToProps)(BookList)

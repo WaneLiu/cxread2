@@ -1,0 +1,42 @@
+import React from 'react'
+import { WingBlank, WhiteSpace, NavBar } from 'antd-mobile'
+import { connect } from 'react-redux'
+import { START_GET_BOOK_DETAIL, SUCCESS_GET_BOOK_DETAIL,
+    FAIL_GET_BOOK_DETAIL } from '../constants/actionTypes'
+import Loading from '../components/loading';
+import BookDetailContent from '../components/bookDetailContent';
+
+const renderBookDetail = (bookDetail) => {
+    switch (bookDetail.type) {
+        case START_GET_BOOK_DETAIL:
+            return <Loading title="章节列表获取中" />
+        case SUCCESS_GET_BOOK_DETAIL:
+            <BookDetailContent bookDetail={bookDetail} 
+                bookChapterList={bookChaptersObj.chapters} />
+        case FAIL_GET_BOOK_DETAIL:
+            return <div>不好意思,当前小说没有入库</div>
+        default:
+            return <div></div>
+
+    }
+    
+}
+
+const BookDetailPage = ({ bookDetail }) => {
+    return (
+        <WingBlank size='lg'>
+            <WhiteSpace size='lg' />
+            <NavBar>书籍详情</NavBar>
+            <WhiteSpace size='lg' />
+            {renderBookDetail(bookDetail)}
+            <WhiteSpace size='lg' />
+        </WingBlank>
+    )
+}
+
+const mapStateToProps = state => ({
+    // bookChaptersObj: state.bookChaptersObj,
+    bookDetail: state.bookDetail
+})
+
+export default connect(mapStateToProps, null)(BookDetailPage)
