@@ -3,8 +3,11 @@
  */
 import React  from 'react'
 import { Grid } from 'antd-mobile';
-import { api, IMG_BASE_URL } from '../constants/api';
+import { IMG_BASE_URL } from '../constants/api';
 import history from '../router/history'
+import { getBookDetail } from '../actions/getBookDetailAction'
+import { connect } from 'react-redux'
+// import { getBookChapterList } from '../actions/getBookChapterListAction';
 
 const getFullImgUrl = url => {
     if (url.indexOf(IMG_BASE_URL) !== -1) {
@@ -12,18 +15,25 @@ const getFullImgUrl = url => {
     }
     return IMG_BASE_URL + url
 }
-
-const onClickBookItem = (bookId) => {
+/**
+ * 
+ * @param {*} bookId 
+ * 点击book item的时候，要发送异步get bookDetail与bookChapterList的请求
+ */
+const onClickBookItem = (bookId, getBookDetail, getBookChapterList) => {
     //console.log(bookId)
+    //发送获取bookDetail异步请求
+    getBookDetail(bookId)
+    getBookChapterList(bookId)
     history.push({
-        pathname: '/book',
+        pathname: '/bookDetail',
         state: {
             bookId
         }
     })
 }
 
-const BookList = ({ books }) => {
+const BookList = ({ books, getBookDetail, getBookChapterList }) => {
     const styles = {
         bookItem: {
             display: 'flex',
@@ -46,7 +56,7 @@ const BookList = ({ books }) => {
 
     return <Grid data={books} columnNum={2} 
                 renderItem={item => (
-                    <div style={styles.bookItem} onClick={() => onClickBookItem(item._id)}>
+                    <div style={styles.bookItem} onClick={() => onClickBookItem(item._id, getBookDetail, getBookChapterList)}>
                         <img src={getFullImgUrl(item.cover)} style={styles.bookCover} alt="" />
                         <div style={styles.title}>{item.title}</div>
                     </div>
@@ -54,4 +64,13 @@ const BookList = ({ books }) => {
             />
 }
 
-export default BookList
+const mapDispatchToProps = dispatch => ({
+    getBookDetail: bookId => {
+        dispatch(getBookDetail(bookId))
+    },
+    getBookChapterList: bookId => {
+        dispatch(getBookChapterList(bookId))
+    }
+})
+
+export default connect(null, mapDispatchToProps)(BookList)

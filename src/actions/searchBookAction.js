@@ -5,13 +5,13 @@ import { api } from '../constants/api';
  */
 
 const searchBook = text => {
-    console.log(text)
+    //console.log(text)
     return dispatch => {
         dispatch(searchBookStart()) 
         fetch(api.SEARCH_BOOKS + `?query=${text}`).then(response => {
             response.json().then(responseJson => {
-                console.log(responseJson)
-                console.log(api.SEARCH_BOOKS + `?query=${text}`)
+                //console.log(responseJson)
+                //console.log(api.SEARCH_BOOKS + `?query=${text}`)
                 if (responseJson.ok) {
                     //最多只展示20个查询结果
                     let books = responseJson.books

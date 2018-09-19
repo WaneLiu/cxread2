@@ -9,7 +9,7 @@ export default (state = {}, action) => {
         case START_FETCH_SEARCH_RESULT:
             return { type: action.type }
         case SUCCESS_FETCH_SEARCH_RESULT:
-            return {fetchBooks: action.fetchBooks, type: SUCCESS_FETCH_SEARCH_RESULT}
+            return {fetchBooks: action.fetchBooks, type: action.type}
         case FAIL_FETCH_SEARCH_RESULT:
             return {type: action.error}
         default:
