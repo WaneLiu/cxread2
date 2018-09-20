@@ -2,6 +2,7 @@ import React from 'react'
 import {Router, Switch, Route } from 'react-router-dom'
 import history from './history';
 import BookNavBar from '../components/bookNavBar';
+import ReadPage from '../pages/readPage';
 
 const router = () => (
     <Router history={history}>
@@ -13,6 +14,7 @@ const router = () => (
             <Route exact path="/my" component={BookNavBar} />
             <Route exact path="/search" component={BookNavBar} />
             <Route exact path="/bookDetail" component={BookNavBar} />
+            <Route exact path="/read" component={ReadPage} />
         </Switch>
     </Router>
 )

@@ -12,7 +12,7 @@ export const getBookChapterList = bookId => {
         fetch(api.READ_BOOK_CHAPTER_LIST(bookId)).then(response => {
             response.json().then(responseJson => {
                 if (responseJson.ok) {
-                    console.log(JSON.stringify(responseJson))
+                    //console.log(JSON.stringify(responseJson))
                     let bookChaptersObj = responseJson.mixToc
                     return dispatch(getBookChapterListSuccess(bookChaptersObj))
                 }
@@ -36,7 +36,7 @@ export const getBookChapterListSuccess = (bookChaptersObj) => ({
     bookChaptersObj: bookChaptersObj
 })
 
-export const getBookChapterListFail = () => ({
+export const getBookChapterListFail = (error) => ({
     type: FAIL_GET_CHAPTER_LIST,
     error
 })
