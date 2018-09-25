@@ -8,7 +8,10 @@ const searchBook = text => {
     //console.log(text)
     return dispatch => {
         dispatch(searchBookStart()) 
-        fetch(api.SEARCH_BOOKS + `?query=${text}`).then(response => {
+        return fetch(api.SEARCH_BOOKS + `?query=${text}`).then(response => {
+            if (response.status !== 200) {
+                throw new Error('Fail to get response with status ' + response.status);
+            }
             response.json().then(responseJson => {
                 //console.log(responseJson)
                 //console.log(api.SEARCH_BOOKS + `?query=${text}`)
