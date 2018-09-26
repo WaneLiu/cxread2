@@ -8,9 +8,9 @@ import { api } from '../constants/api';
 const getBookDetail = bookId => {
     return dispatch => {
         dispatch(getBookDetailStart())
-        fetch(api.BOOK_DETAIL(bookId)).then(response => {
+        return fetch(api.BOOK_DETAIL(bookId)).then(response => {
             response.json().then(responseJson => {
-                dispatch(getBookDetailSuccess(responseJson))
+                return dispatch(getBookDetailSuccess(responseJson))
             }).catch(error => {
                 dispatch(getBookDetailFail(error))
             })

@@ -11,7 +11,7 @@ export default (state = {}, action) => {
         case SUCCESS_FETCH_SEARCH_RESULT:
             return {fetchBooks: action.fetchBooks, type: action.type}
         case FAIL_FETCH_SEARCH_RESULT:
-            return {type: action.error}
+            return {type: action.type, error: action.error};
         default:
             return state
     }

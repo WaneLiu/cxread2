@@ -11,6 +11,7 @@ const searchBook = text => {
         return fetch(api.SEARCH_BOOKS + `?query=${text}`).then(response => {
             if (response.status !== 200) {
                 throw new Error('Fail to get response with status ' + response.status);
+                //return dispatch(searchBookFail('fetch fail status: ' + response.status))
             }
             response.json().then(responseJson => {
                 //console.log(responseJson)
@@ -19,7 +20,7 @@ const searchBook = text => {
                     //最多只展示20个查询结果
                     let books = responseJson.books
                     books.length > 20 ? books = books.slice(0, 20) : books = books
-                    dispatch(searchBookSuccess(books))
+                    return dispatch(searchBookSuccess(books))
                 }
             }).catch(error => {
                 dispatch(searchBookFail(error))

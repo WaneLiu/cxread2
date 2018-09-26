@@ -9,7 +9,7 @@ import { api } from '../constants/api';
 export const getBookChapterList = bookId => {
     return dispatch => {
         dispatch(getBookChapterListStart())
-        fetch(api.READ_BOOK_CHAPTER_LIST(bookId)).then(response => {
+        return fetch(api.READ_BOOK_CHAPTER_LIST(bookId)).then(response => {
             response.json().then(responseJson => {
                 if (responseJson.ok) {
                     //console.log(JSON.stringify(responseJson))

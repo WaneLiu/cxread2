@@ -27,6 +27,21 @@ describe('Search_Book_Action', () => {
         })
     })
 
+    it("should dispatch search_book_fail action type on fetch fail", () => {
+        const mockResponse = Promise.resolve({
+            status: 200,
+            json: () => Promise.resolve({ok: false})
+        })
+        stubbedFetch.returns(mockResponse)
+        return store.dispatch(actions.searchBook('cba')).then(() => {
+            const dispatchedActions = store.getActions()
+            expect(dispatchedActions.length).toBe(3)
+            expect(dispatchedActions[0].type).toBe(actionTypes.START_FETCH_SEARCH_RESULT)
+            expect(dispatchedActions[1].type).toBe(actionTypes.SUCCESS_FETCH_SEARCH_RESULT)
+            expect(dispatchedActions[2].type).toBe(actionTypes.START_FETCH_SEARCH_RESULT)
+        })
+    })
+
     afterEach(() => {
         stubbedFetch.restore()
     })
