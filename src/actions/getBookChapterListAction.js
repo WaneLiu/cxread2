@@ -1,6 +1,21 @@
 import { START_GET_CHAPTER_LIST, SUCCESS_GET_CHAPTER_LIST, 
     FAIL_GET_CHAPTER_LIST } from '../constants/actionTypes'
 import { api } from '../constants/api';
+import { READ_BOOK_START, READ_BOOK_MIDDLE } from '../constants/actionTypes'
+
+/**
+ * 设置当前书籍阅读的进度
+ */
+const startRead = () => ({
+    readStatus: READ_BOOK_MIDDLE,
+    chapterNum: 1
+})
+
+const clickChapter = (chapterNum) => ({
+    readStatus: READ_BOOK_MIDDLE,
+    chapterNum
+})
+
 
 /**
  * @param bookId

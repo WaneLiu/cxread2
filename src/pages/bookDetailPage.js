@@ -5,6 +5,7 @@ import { START_GET_BOOK_DETAIL, SUCCESS_GET_BOOK_DETAIL,
     FAIL_GET_BOOK_DETAIL } from '../constants/actionTypes'
 import Loading from '../components/loading';
 import BookDetailContent from '../components/bookDetailContent';
+import history from '../router/history';
 
 class BookDetailPage extends PureComponent {
 
@@ -24,10 +25,16 @@ class BookDetailPage extends PureComponent {
                 ret = <div>{bookDetail.error}</div>
                 break
             default:
-                ret =  <div>请到首页</div>
+                ret =  <div onClick={this.goToFirstPage}>点击跳转到首页</div>
         }
         return ret
-    }    
+    }
+    
+    goToFirstPage = () => {
+        history.push({
+            pathname: "/selected"
+        })
+    }
 
     render() {
         const { bookDetail } = this.props

@@ -37,13 +37,17 @@ const renderSearchResult = searchBookResult => {
 const SearchResultPage = ({ searchBookResult }) => {
     //console.log(searchBookResult)
     return (
-        <WingBlank size='lg'>
-            <WhiteSpace size='lg' />
-            <NavBar>搜索结果</NavBar>
-            <WhiteSpace size='lg' />
-            {renderSearchResult(searchBookResult)}
-            <WhiteSpace size='lg' />
-        </WingBlank>
+        <div style={{
+            marginBottom: '140px'
+        }}>
+            <WingBlank size='lg'>
+                <WhiteSpace size='lg' />
+                <NavBar>搜索结果</NavBar>
+                <WhiteSpace size='lg' />
+                {renderSearchResult(searchBookResult)}
+                <WhiteSpace size='lg' />
+            </WingBlank>
+        </div>
     )
 }
 

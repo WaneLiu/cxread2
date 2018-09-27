@@ -18,7 +18,9 @@ class BookNavBar extends PureComponent {
     render() {
         return (
             <Router history={history}>
-                <div>
+                <div style={{
+                    position: 'relative'
+                }}>
                     <div style={{
                         position: 'absolute',
                         bottom: '0',
