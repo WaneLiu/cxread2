@@ -24,5 +24,11 @@ export const api = {
     READ_BOOK_CHAPTER_LIST: (bookId) => {
         return API_BASE_URL + '/mix-atoc/' + bookId + '?view=chapters'
     },
+    /**
+     * @param chapterUrl
+     */
+    READ_BOOK_CHAPTER_CONTENT_URL: chapterUrl => {
+        return API_CHAPTER_URL + chapterUrl
+    }
 }
 

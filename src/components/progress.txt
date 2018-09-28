@@ -4,6 +4,8 @@
 
 接下来需要做：
 1.获取书籍章节列表的action reducer已完成
-2.书籍详情与章节列表的显示,在章节列表的reducer中添加一个字段reading: true|false标识用户是否正在阅读本书
+2.书籍详情与章节列表的显示
+
+next: 添加一个字段reading: true|false标识用户是否正在阅读本书 => 在add read history中做
 
 已完成章节列表store，接下来需要展示章节详情

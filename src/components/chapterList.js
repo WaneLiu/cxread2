@@ -1,18 +1,24 @@
 import React, { PureComponent } from 'react'
 import { Button, List } from 'antd-mobile';
 import history from '../router/history';
-
+import { clickChapter } from '../actions/getBookChapterListAction'
+import { connect } from 'react-redux'
+import { getCurrentChapterContent } from '../actions/getCurrentChapterContentAction'
 class ChapterList extends PureComponent {
     constructor(props) {
         super(props)
         this.chapters = this.props.chapters
         this.length = this.chapters.length
+        this.clickChapter = this.props.clickChapter
+        this.getCurrentChapterContent = this.props.getCurrentChapterContent
         this.state = {
             idx: 0
         }
     }
 
-    onClickChapter = () => {
+    onClickChapter = (currentChapterNum, chapterLink) => {
+        this.clickChapter(currentChapterNum)//在chapterObj中设置当前书籍的阅读状态: reading|start
+        this.getCurrentChapterContent(chapterLink)
         history.push({
             pathname: "/read"
         })
@@ -90,7 +96,7 @@ class ChapterList extends PureComponent {
             }}>
                 <List renderHeader={() => '章节列表'}>
                     {this.chapters.slice(idx, (idx + 1) * 10).map((value, index) => {
-                        return <Item key={index} onClick={this.onClickChapter}>{value.title}</Item>
+                        return <Item key={index} onClick={() => this.onClickChapter(index, value.link)}>{value.title}</Item>
                     })}
                 </List>
                 <div className="chapterPage" style={styles.chapterPage}>
@@ -104,4 +110,9 @@ class ChapterList extends PureComponent {
     }
 }
 
-export default ChapterList
+const mapDispatchToProps = dispatch => ({
+    clickChapter: currentChapterNum => dispatch(clickChapter(currentChapterNum)),
+    getCurrentChapterContent: chapterLink => dispatch(getCurrentChapterContent(chapterLink))
+})
+
+export default connect(null, mapDispatchToProps)(ChapterList)

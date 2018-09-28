@@ -6,15 +6,17 @@ import { READ_BOOK_START, READ_BOOK_MIDDLE } from '../constants/actionTypes'
 /**
  * 设置当前书籍阅读的进度
  */
-const startRead = () => ({
-    readStatus: READ_BOOK_MIDDLE,
-    chapterNum: 1
+export const startRead = () => ({
+    type: READ_BOOK_MIDDLE,
+    currentChapterNum: 1
 })
 
-const clickChapter = (chapterNum) => ({
-    readStatus: READ_BOOK_MIDDLE,
-    chapterNum
+export const clickChapter = (currentChapterNum) => ({
+    type: READ_BOOK_MIDDLE,
+    currentChapterNum
 })
+
+
 
 
 /**
