@@ -1,5 +1,5 @@
 import { START_GET_CHAPTER_LIST, SUCCESS_GET_CHAPTER_LIST, 
-    FAIL_GET_CHAPTER_LIST } from '../constants/actionTypes'
+    FAIL_GET_CHAPTER_LIST, UPDATE_CURRENT_CHAPTER_NUM } from '../constants/actionTypes'
 import { api } from '../constants/api';
 import { READ_BOOK_START, READ_BOOK_MIDDLE } from '../constants/actionTypes'
 
@@ -13,6 +13,14 @@ export const startRead = () => ({
 
 export const clickChapter = (currentChapterNum) => ({
     type: READ_BOOK_MIDDLE,
+    currentChapterNum
+})
+
+/**
+ * 修改书籍当前阅读章节
+ */
+export const updateCurrentChapterNum = (currentChapterNum) => ({
+    type: UPDATE_CURRENT_CHAPTER_NUM,
     currentChapterNum
 })
 

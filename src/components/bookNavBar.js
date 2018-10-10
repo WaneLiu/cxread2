@@ -19,22 +19,9 @@ class BookNavBar extends PureComponent {
         return (
             <Router history={history}>
                 <div style={{
-                    position: 'relative'
+                    height: '100%'
                 }}>
-                    <div style={{
-                        position: 'absolute',
-                        bottom: '0',
-                        width: '100%',
-                        height: '35px',
-                        backgroundColor: 'aqua',
-                    }}>
-                        <TabBar>
-                            <ItemBar text="书架" name="bookshelves" />
-                            <ItemBar text="精选" name="selected" />
-                            <ItemBar text="排行榜" name="rank" />
-                            <ItemBar text="我的" name="my" />
-                        </TabBar>
-                    </div>
+                    
                     <Switch>
                         <Route exact path="/bookshelves" component={BookShelfves}/>
                         <Route exact path="/selected" component={selectedPage}/>
@@ -43,6 +30,18 @@ class BookNavBar extends PureComponent {
                         <Route exact path="/search" component={SearchResultPage}/>
                         <Route exact path="/bookDetail" component={BookDetailPage} />
                     </Switch>
+                    <div style={{
+                        width: '100%',
+                        backgroundColor: 'aqua',
+                        minHeight: '100%'
+                    }}>
+                        <TabBar>
+                            <ItemBar text="书架" name="bookshelves" />
+                            <ItemBar text="精选" name="selected" />
+                            <ItemBar text="排行榜" name="rank" />
+                            <ItemBar text="我的" name="my" />
+                        </TabBar>
+                    </div>
                 </div>
             </Router>
         )

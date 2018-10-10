@@ -10,7 +10,8 @@ class TabBar extends PureComponent {
                 flexDirection: 'row',
                 flexWrap: 'nowrap',
                 justifyContent: 'space-around',
-                textAlign: 'center'
+                textAlign: 'center',
+                flex: 1
             }}>
                 {this.props.children}
             </div>    

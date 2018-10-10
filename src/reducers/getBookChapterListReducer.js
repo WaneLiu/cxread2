@@ -1,5 +1,5 @@
 import { START_GET_CHAPTER_LIST, SUCCESS_GET_CHAPTER_LIST, 
-    FAIL_GET_CHAPTER_LIST, READ_BOOK_MIDDLE } from '../constants/actionTypes'
+    FAIL_GET_CHAPTER_LIST, READ_BOOK_MIDDLE, UPDATE_CURRENT_CHAPTER_NUM } from '../constants/actionTypes'
 /**
  * 根据bookId获取书籍列表
  * 书籍列表存储在 state.chapters,即bookChaptersObj.chapters
